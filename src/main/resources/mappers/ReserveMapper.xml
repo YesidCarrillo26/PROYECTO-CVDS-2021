@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.eci.cvds.persistence.mybatisimpl.mappers.ReserveMapper">
+
+
+    <insert id="createReserve" parameterType="map">
+        insert into reservas (recurso, usuario, horainicial, horafinal, periodicidad, fechafinal)
+        values (#{reserve.recurso},#{reserve.usuario}, #{reserve.horaInicial}, #{reserve.horaFinal}, #{reserve.periodicidad},
+        #{reserve.fechaFinal})
+    </insert>
+
+    <delete id = "deleteReserve" parameterType="map">
+        delete from reservas
+        <where>
+            <if test="codigo != null">
+                and codigo = #{resource.codigo}
+            </if>
+        </where>
+    </delete>
+
+    <select parameterType="map" id="getListReserves" resultMap="ReserveResult">
+        select
+        r2.nombre,
+        u.nombres,
+        u.apellidos,
+        horainicial,
+        horafinal,
+        periodicidad,
+        fechafinal,
+        programa
+        from reservas r join usuarios u on r.usuario = u.codigo join recursos r2 on r.recurso = r2.codigo
+        order by r2.nombre
+    </select>
+
+
+
+    <!--property como esta escrito en la clase y column como esta en la base de datos   !-->
+    <resultMap type="Reserve" id="ReserveResult">
+        <result property="recursoi" column="r2.nombre"/>
+        <result property="nombresu" column="u.nombres"/>
+        <result property="apellidosu" column="u.apellidos"/>
+        <result property="horaInicial" column="horainicial"/>
+        <result property="horaFinal" column="horafinal"/>
+        <result property="periodicidad" column="periodicidad"/>
+        <result property="fechaFinal" column="fechafinal"/>
+        <result property="programa" column="programa"/>
+    </resultMap>
+
+</mapper>

@@ -1,0 +1,231 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui"
+      xmlns:of="http://omnifaces.org/functions">
+
+<h:head>
+    <title>Reservar Recursos</title>
+    <style>
+        body {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('https://escuelaing.s3.amazonaws.com/production/images/Biblioteca-Bloque-B-Escuela-Colombiana-de-I.max-1200x600.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+            color: white;
+            font-family: 'Helvetica', sans-serif;
+            align-self: center;
+            text-align: center;
+            align-items: center;
+            align-content: center;
+        }
+
+        .picture {
+            height: 60px;
+            width: auto;
+            float: left;
+        }
+
+        header {
+            min-height: 100px;
+            background-color: rgba(205, 205, 205, 0.607);
+        }
+
+        .form {
+            position: relative;
+            z-index: 1;
+            max-width: 360px;
+            margin: 0 auto 100px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+        }
+
+        .form input {
+            font-family: "Helvetica", sans-serif;
+            outline: 0;
+            background: #f2f2f2;
+            width: 100%;
+            border: 0;
+            margin: 0 0 15px;
+            padding: 15px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        .form select {
+            font-family: "Helvetica", sans-serif;
+            outline: 0;
+            background: #f2f2f2;
+            width: 100%;
+            border: 0;
+            margin: 0 0 15px;
+            padding: 15px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        .form button {
+            font-family: "Helvetica", sans-serif;
+            text-transform: uppercase;
+            outline: 0;
+            background: #ff0000;
+            width: 70%;
+            border: 0;
+            padding: 15px;
+            color: #FFFFFF;
+            font-size: 14px;
+            -webkit-transition: all 0.3 ease;
+            transition: all 0.3 ease;
+            cursor: pointer;
+        }
+
+        .form button:hover,
+        .form button:active,
+        .form button:focus {
+            background: #ff0000;
+        }
+
+        .form .message {
+            margin: 15px 0 0;
+            color: #b3b3b3;
+            font-size: 12px;
+        }
+
+        .form .message a {
+            color: #ff0000;
+            text-decoration: none;
+        }
+
+        .form .register-form {
+            display: none;
+        }
+    </style>
+</h:head>
+
+<h:body>
+    <script type="text/javascript">
+        PrimeFaces.locales['es'] = {
+            closeText: 'Cerrar',
+            prevText: 'Anterior',
+            nextText: 'Siguiente',
+            monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+            monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+            dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+            dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+            dayNamesMin: ['D', 'L', 'M', 'X', 'J', 'V', 'S'],
+            weekHeader: 'Semana',
+            firstDay: 1,
+            isRTL: false,
+            showMonthAfterYear: false,
+            yearSuffix: '',
+            timeOnlyTitle: 'Sólo hora',
+            timeText: 'Tiempo',
+            hourText: 'Hora',
+            minuteText: 'Minuto',
+            secondText: 'Segundo',
+            currentText: 'Fecha actual',
+            ampm: false,
+            month: 'Mes',
+            week: 'Semana',
+            day: 'Día',
+            allDayText: 'Todo el día'
+        };
+    </script>
+
+    <header>
+        <br></br>
+        <div>
+            <img class="picture"
+                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Logo_de_la_Escuela_Colombiana_de_Ingenier%C3%ADa.svg/1920px-Logo_de_la_Escuela_Colombiana_de_Ingenier%C3%ADa.svg.png">
+            </img>
+            <p:commandButton value="LOGOUT" actionListener="#{navigationController.paginaInicio()}"
+                             style="float:right; right: 50px; top: 10px; background-color: #ff0000; border: none;" />
+        </div>
+    </header>
+    <br></br>
+    <h:form>
+        <p:menubar style="border: rgba(185, 185, 185, 0.315); background-color: rgba(205, 205, 205, 0.607);">
+            <p:menuitem value="Inicio" actionListener="#{ResourceSearchBean.loadListResources()}"
+                        action="#{navigationController.paginaUser()}" />
+            <p:menuitem value="Consultar Recursos" actionListener="#{ResourceSearchBean.loadListResources()}"
+                        action="#{navigationController.paginaConsultaRecU()}" />
+            <p:menuitem value="Consultar Reserva" actionListener="#{ResourceSearchBean.loadListResources()}"
+                        action="#{navigationController.paginaConsultaReserva()}" />
+        </p:menubar>
+    </h:form>
+
+    <h1>Reserva de Recursos</h1>
+    <h:form>
+        <p:outputLabel styleClass="p-d-block">Reservas existentes</p:outputLabel>
+        <br></br>
+        <br></br>
+        <p:commandButton value="Consultar" type="button" onclick="PF('schedule').show();" class="ui-button-danger" />
+        <p:dialog widgetVar="schedule" modal="true" width="1000" height="500">
+            <p:schedule id="schedule" value="#{ScheduleBean.eventModel}" widgetVar="myschedule" style="padding: 1%;">
+            </p:schedule>
+        </p:dialog>
+        <p:growl id="messages" showDetail="true" />
+    </h:form>
+    <br></br>
+    <h:form class="form" var="reserve" id="formRegistrarCliente">
+        <p:growl id="message" showDetail="true" />
+        <!-- Poner información de un map par apoder cogerlo en el selctonemenu-->
+
+        <p:selectOneMenu style="width:100%;" id="reservaRec" value="#{createReserve.selectedOneMenuRecurso}" required="true">
+            <f:selectItem itemLabel="Recurso" itemValue="" />
+            <f:selectItem itemLabel="Sala Estudio 1" itemValue="1" />
+            <f:selectItem itemLabel="PC Portatil 1" itemValue="2" />
+            <f:selectItem itemLabel="VideoBean 1" itemValue="3" />
+            <f:selectItem itemLabel="Sala Estudio 2" itemValue="4" />
+            <f:selectItem itemLabel="PC Portatil 2" itemValue="5" />
+            <f:selectItem itemLabel="Televisor 1" itemValue="6" />
+            <f:selectItem itemLabel="Sala Estudio 3" itemValue="7" />
+            <f:selectItem itemLabel="PC Portatil 3" itemValue="8" />
+            <f:selectItem itemLabel="PC Portatil 12" itemValue="9" />
+            <f:selectItem itemLabel="PC Portatil 10" itemValue="10" />
+            <f:selectItem itemLabel="PC Portatil 9" itemValue="11" />
+            <f:selectItem itemLabel="PC Portatil 8" itemValue="12" />
+            <f:selectItem itemLabel="PC Portatil 13" itemValue="13" />
+        </p:selectOneMenu>
+        <br></br>
+        <br></br>
+
+        <p:selectOneMenu style="width:100%;" id="reservaUser" value="#{createReserve.selectedOneMenuUser}" required="true">
+            <f:selectItem itemLabel="Id usuario" itemValue="" />
+            <f:selectItem itemLabel="Yesid Carrillo" itemValue="1" />
+            <f:selectItem itemLabel="Edwar Lozano" itemValue="2" />
+            <f:selectItem itemLabel="Santiago Fetecua" itemValue="3" />
+            <f:selectItem itemLabel="Ronaldo Henao" itemValue="4" />
+        </p:selectOneMenu>
+        <br></br>
+        <br></br>
+
+        <p> Hora Inicio</p>
+        <p:datePicker style="width:100%;" id="reservaIni" value="#{createReserve.horaInicialSelected}" timeOnly="true"
+                      pattern="HH:mm:ss" required="true" />
+
+        <p> Hora Fin</p>
+        <p:datePicker style="width:100%;" id="reservaFin" value="#{createReserve.horaFinalSelected}" timeOnly="true"
+                      pattern="HH:mm:ss" required="true" />
+
+        <p:selectOneMenu style="width:100%;" id="reservaPeri" value="#{createReserve.periodicidad}" required="true">
+            <f:selectItem itemLabel="Periodicidad" itemValue="" />
+            <f:selectItem itemLabel="Semanal" itemValue="Semanal" />
+            <f:selectItem itemLabel="Unica" itemValue="Unica" />
+            <f:selectItem itemLabel="Diaria" itemValue="Diaria" />
+        </p:selectOneMenu>
+        <br></br>
+        <br></br>
+        <p>Fecha Final</p>
+        <p:datePicker style="width:100%;" id="reseFecFIn" value="#{createReserve.fechaFinal}" />
+
+        <p:commandButton update="formRegistrarCliente" value="Reservar" class="ui-button-danger"
+                                actionListener="#{createReserve.createReserve()}"/>
+
+    </h:form>
+</h:body>
+
+</html>

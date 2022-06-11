@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+  <title>Consultar Recursos</title>
+  <style>
+    body {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('https://escuelaing.s3.amazonaws.com/production/images/Biblioteca-Bloque-B-Escuela-Colombiana-de-I.max-1200x600.jpg');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
+      background-size: cover;
+      color: white;
+      font-family: 'Helvetica', sans-serif;
+      align-self: center;
+      text-align: center;
+      align-items: center;
+      align-content: center;
+    }
+
+    .picture {
+      height: 60px;
+      width: auto;
+      float: left;
+    }
+
+    header {
+      min-height: 100px;
+      background-color: rgba(205, 205, 205, 0.607);
+    }
+  </style>
+
+</h:head>
+
+<h:body>
+  <header>
+    <br></br>
+    <div>
+      <img class="picture"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Logo_de_la_Escuela_Colombiana_de_Ingenier%C3%ADa.svg/1920px-Logo_de_la_Escuela_Colombiana_de_Ingenier%C3%ADa.svg.png">
+      </img>
+      <p:commandButton value="LOGOUT" actionListener="#{navigationController.paginaInicio()}"
+        style="float:right; right: 50px; top: 10px; background-color: #ff0000; border: none;" />
+    </div>
+  </header>
+  <br></br>
+  <h:form>
+    <p:menubar style="border: rgba(185, 185, 185, 0.315); background-color: rgba(205, 205, 205, 0.607);">
+      <p:menuitem value="Inicio" actionListener="#{ResourceSearchBean.loadListResources()}"
+        action="#{navigationController.paginaUser()}" />
+      <p:menuitem value="Reservar Recurso" actionListener="#{ResourceSearchBean.loadListResources()}"
+        action="#{navigationController.paginaReservas()}" />
+      <p:menuitem value="Consultar Reserva" actionListener="#{ResourceSearchBean.loadListResources()}"
+        action="#{navigationController.paginaConsultaReserva()}" />
+    </p:menubar>
+    <br></br>
+  </h:form>
+
+  <h:form id="consultarRecurso">
+    <p:dataTable id="listaRecursos" var="Resource" value="#{ResourceSearchBean.loadListResources()}"
+      rowKey="#{Resource.codigo}" paginator="true" rows="20" emptyMessage="No hay recursos con la información dada"
+      paginatorTemplate="{CurrentPageReport} {PreviousPageLink} {PageLinks} {LastPageLink}RowsPerPageDropdown}"
+      currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords}" rowsPerPageTemplate="5,10,15,20">
+
+      <f:facet name="header">
+        <span>Recursos Disponibles</span>
+      </f:facet>
+
+      <p:column headerText="Código">
+        <h:outputText value="#{Resource.codigo}" />
+      </p:column>
+
+      <p:column headerText="Tipo" sortBy="#{Resource.tipo}" filterBy="#{Resource.tipo}">
+        <h:outputText value="#{Resource.tipo}" />
+      </p:column>
+
+      <p:column headerText="Ubicación" sortBy="#{Resource.ubicacion}" filterBy="#{Resource.ubicacion}">
+        <h:outputText value="#{Resource.ubicacion}" />
+      </p:column>
+
+      <p:column headerText="Nombre" sortBy="#{Resource.nombre}" filterBy="#{Resource.nombre}">
+        <h:outputText value="#{Resource.nombre}" />
+      </p:column>
+
+      <p:column headerText="Capacidad" sortBy="#{Resource.capacidad}" filterBy="#{Resource.capacidad}">
+        <h:outputText value="#{Resource.capacidad}" />
+      </p:column>
+
+    </p:dataTable>
+
+  </h:form>
+</h:body>
+
+</html>

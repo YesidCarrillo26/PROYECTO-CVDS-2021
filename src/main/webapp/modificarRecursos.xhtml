@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+  <title>Modificar Recurso</title>
+  <style>
+    body {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('https://escuelaing.s3.amazonaws.com/production/images/_DSC5270.max-1440x800.jpg');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
+      background-size: cover;
+      color: white;
+      font-family: 'Helvetica', sans-serif;
+      align-self: center;
+      text-align: center;
+      align-items: center;
+      align-content: center;
+    }
+
+    .boton {
+      font-family: "Helvetica", sans-serif;
+      border-radius: 5px;
+      width: auto;
+      background: #105494;
+      color: #FFFFFF;
+      border: 0;
+    }
+
+    .picture {
+      height: 60px;
+      width: auto;
+      float: left;
+    }
+
+    a:hover .boton {
+      background-color: #4d4d4d;
+    }
+
+    header {
+      min-height: 100px;
+      background-color: rgba(205, 205, 205, 0.607);
+    }
+  </style>
+</h:head>
+
+<header>
+  <br></br>
+  <div>
+    <img class="picture"
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Logo_de_la_Escuela_Colombiana_de_Ingenier%C3%ADa.svg/1920px-Logo_de_la_Escuela_Colombiana_de_Ingenier%C3%ADa.svg.png">
+    </img>
+    <p:commandButton value="LOGOUT" actionListener="#{navigationController.paginaInicio()}"
+      style="float:right; right: 50px; top: 10px; background-color: #ff0000; border: none;" />
+  </div>
+</header>
+
+<h:body>
+  <br></br>
+  <h:form>
+    <p:menubar style="border: rgba(185, 185, 185, 0.315); background-color: rgba(205, 205, 205, 0.607);">
+      <p:menuitem value="Inicio" actionListener="#{ResourceSearchBean.loadListResources()}"
+        action="#{navigationController.paginaAdmin()}" />
+      <p:menuitem value="Consultar Recursos" actionListener="#{ResourceSearchBean.loadListResources()}"
+        action="#{navigationController.paginaConsultaRec()}" />
+      <p:menuitem value="Registrar Recurso" actionListener="#{ResourceSearchBean.loadListResources()}"
+        action="#{navigationController.paginaRegistroRec()}" />
+    </p:menubar>
+    <br></br>
+  </h:form>
+
+  <h:form id="modificarRecurso">
+    <p:dataTable id="listaRecursos" var="Resource" value="#{ResourceSearchBean.loadListResources()}"
+      rowKey="#{Resource.codigo}" paginator="true" rows="20"
+      paginatorTemplate="{CurrentPageReport} {PreviousPageLink} {PageLinks} {LastPageLink}RowsPerPageDropdown}"
+      currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords}" rowsPerPageTemplate="5,10,15,20">
+      <p:column style="color:black;">
+        <f:facet name="header">
+          <h:outputText value="Codigo" />
+        </f:facet>
+        <h:outputText value="#{Resource.codigo}" />
+      </p:column>
+
+      <p:column style="color:black;">
+        <f:facet name="header">
+          <h:outputText value="Tipo" />
+        </f:facet>
+        <h:outputText value="#{Resource.tipo}" />
+      </p:column>
+
+      <p:column style="color:black;">
+        <f:facet name="header">
+          <h:outputText value="Ubicacion" />
+        </f:facet>
+        <h:outputText value="#{Resource.ubicacion}" />
+      </p:column>
+
+      <p:column style="color:black;">
+        <f:facet name="header">
+          <h:outputText value="Nombre" />
+        </f:facet>
+        <h:outputText value="#{Resource.nombre}" />
+      </p:column>
+
+      <p:column style="color:black;">
+        <f:facet name="header">
+          <h:outputText value="Capacidad" />
+        </f:facet>
+        <h:outputText value="#{Resource.capacidad}" />
+      </p:column>
+
+      <p:column style="color:black;">
+        <f:facet name="header">
+          <h:outputText value="Estado" />
+        </f:facet>
+        <h:outputText value="#{Resource.estado}" />
+      </p:column>
+
+      <p:column style="color:black;">
+        <f:facet name="header">
+          <h:outputText value="" />
+        </f:facet>
+        <a>
+          <h:commandButton value="Cambiar Estado" class="boton"
+            actionListener="#{ResourceSearchBean.loadListResources()}"
+            action="#{ResourceSearchBean.updateResource(Resource)}" />
+        </a>
+
+      </p:column>
+
+    </p:dataTable>
+  </h:form>
+</h:body>
+
+</html>

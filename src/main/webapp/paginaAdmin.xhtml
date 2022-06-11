@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui">
+<h:head>
+  <title>Gestión Biblioteca ECI</title>
+  <style>
+    body {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('https://escuelaing.s3.amazonaws.com/production/images/_DSC5270.max-1440x800.jpg');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
+      background-size: cover;
+
+      color: white;
+      font-family: 'Helvetica', sans-serif;
+      align-self: center;
+      text-align: center;
+      align-items: center;
+      align-content: center;
+    }
+
+    .picture {
+      height: 60px;
+      width: auto;
+      float: left;
+    }
+
+    header {
+      min-height: 100px;
+      background-color: rgba(205, 205, 205, 0.607);
+    }
+  </style>
+
+</h:head>
+
+<h:body>
+  <header>
+    <br></br>
+    <div>
+      <img class="picture"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Logo_de_la_Escuela_Colombiana_de_Ingenier%C3%ADa.svg/1920px-Logo_de_la_Escuela_Colombiana_de_Ingenier%C3%ADa.svg.png">
+      </img>
+      <p:commandButton value="LOGOUT" actionListener="#{navigationController.paginaInicio()}"
+        style="float:right; right: 50px; top: 10px; background-color: #ff0000; border: none;" />
+    </div>
+  </header>
+  <br></br>
+
+  <h:form>
+    <p:menubar style="border: rgba(185, 185, 185, 0.315); background-color: rgba(205, 205, 205, 0.607);">
+      <p:menuitem value="Consultar Recursos" actionListener="#{ResourceSearchBean.loadListResources()}"
+        action="#{navigationController.paginaConsultaRec()}" />
+      <p:menuitem value="Registrar Recurso" actionListener="#{ResourceSearchBean.loadListResources()}"
+        action="#{navigationController.paginaRegistroRec()}" />
+      <p:menuitem value="Cambiar Estado Recurso" actionListener="#{ResourceSearchBean.loadListResources()}"
+        action="#{navigationController.paginaModificar()}" />
+    </p:menubar>
+  </h:form>
+  <h1 style="font-size:250%;">Bienvenido al sistema de gestión de recuros ECI</h1>
+
+  <p style="font-size:150%; text-align:center justify;">
+    Como administrador de la biblioteca de la ECI podrás consultar los recursos existentes, registrar nuevos recursos, <br></br> y
+    cambiar los estados de los recursos actuales. Estos recursos pueden ser salas de estudio, <br></br> equipos de cómputo, y
+    equipos multimedia para el desarrollo de diferentes actividades.
+  </p>
+  <br></br>
+</h:body>
+
+</html>

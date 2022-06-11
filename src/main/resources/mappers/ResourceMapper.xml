@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.eci.cvds.persistence.mybatisimpl.mappers.ResourceMapper">
+
+    <insert id="createResource" parameterType="map">
+        insert into recursos (tipo , ubicacion, nombre, estado, capacidad)
+        values (#{resource.tipoI}, #{resource.ubicacionI}, #{resource.nombre}, #{resource.estado}, #{resource.capacidad})
+    </insert>
+
+
+
+    <select parameterType="map" id="getListResources" resultMap="ResourceResult">
+        select r.codigo,
+            t.nombre as tiporecurso,
+            u.nombre as ubicacion,
+            r.nombre as nombrerecurso,
+            estado,
+            capacidad
+        from recursos r join tiporecurso t on r.tipo=t.codigo
+            join ubicaciones u on r.ubicacion=u.codigo
+        order by r.codigo
+    </select>
+
+    <select id="getListActiveResources" resultMap="ResourceResult">
+        select r.codigo,
+            t.nombre as tiporecurso,
+            u.nombre as ubicacion,
+            r.nombre as nombrerecurso,
+            estado,
+            capacidad
+        from recursos r join tiporecurso t on r.tipo=t.codigo
+            join ubicaciones u on r.ubicacion=u.codigo
+        where estado='Activo'
+        order by r.codigo
+    </select>
+
+    <update id="updateResource" parameterType="map">
+        update recursos set estado = #{resource.estado}
+        <where>
+            <if test="codigo != null">
+                and codigo = #{resource.codigo}
+            </if>
+        </where>
+    </update>
+
+    <resultMap type="Resource" id="ResourceResult">
+        <id property="codigo" column="r.codigo"/>
+        <result property="tipo" column="tiporecurso"/>
+        <result property="ubicacion" column="ubicacion"/>
+        <result property="nombre" column="nombrerecurso"/>
+        <result property="estado" column="estado"/>
+        <result property="capacidad" column="capacidad"/>
+    </resultMap>
+
+    <resultMap type="Resource" id="ResourceResult2">
+        <id property="codigo" column="codigo"/>
+        <result property="tipo" column="tiporecurso"/>
+        <result property="ubicacion" column="ubicacion"/>
+        <result property="nombre" column="nombrerecurso"/>
+        <result property="estado" column="estado"/>
+        <result property="capacidad" column="capacidad"/>
+    </resultMap>
+
+</mapper>

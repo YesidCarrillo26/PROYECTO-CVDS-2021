@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.eci.cvds.persistence.mybatisimpl.mappers.LocationMapper">
+
+
+    <select parameterType="map" id="getLocationList" resultMap="LocationResult">
+        select (codigo, nombre, horaminima, horamaxima) from ubicaciones
+    </select>
+
+    <resultMap type="Location" id="LocationResult">
+        <id property="codigo" column="codigo"/>
+        <result property="nombre" column="nombre"/>
+        <result property="horaMinima" column="horaminima"/>
+        <result property="horaMaxima" column="horamaxima"/>
+    </resultMap>
+
+</mapper>
