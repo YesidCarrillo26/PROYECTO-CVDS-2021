@@ -1,31 +1,19 @@
-# 2022-1-PROYCVDS-CICLAS
+# 2022-2-PROY1
 
 ## Nombre del proyecto
-### _**2022-1-PROYCVDS-CICLAS**_
+### _**2022-2-PROY1**_
 
 
 
 
 ## Período académico
-### _2022-1_
+### _2022-2_
 ## Nombre del curso
-### _CVDS-1_
+### __
 ## Nombre de los integrantes
 * ### YESID SANTIAGO CARRILLO ALMEIDA
-* ### EDGAR RONALDO HENAO VILLARREAL
-* ### SANTIAGO MIGUEL FETECUA SUÁREZ
-* ### EDWAR FABIAN LOZANO FLOREZ
-* ### CARLOS ALBERTO SORZA GÓMEZ
-## Nombre del profesor
-### JULIAN MAURICIO VELASCO BRICEÑO
 ## Roles asignados
 * ### YESID SANTIAGO CARRILLO ALMEIDA: ***Back***
-* ### EDGAR RONALDO HENAO VILLARREAL: ***Back***
-* ### SANTIAGO MIGUEL FETECUA SUÁREZ:  ***Front***
-* ### EDWAR FABIAN LOZANO FLOREZ: ***Front***
-* ### CARLOS ALBERTO SORZA GÓMEZ ***Back***
-* ### JULIAN MAURICIO VELASCO BRICEÑO: ***Dueño del producto***
-* ### SANTIAGO AGUSTIN LAITON CUBIDES: ***Dueño del producto***
 
 ## Imagenes del producto.
 
@@ -131,10 +119,6 @@ Las siguientes imagenes muestran el funcionamiento del producto.
 Integrantes.
 
 - Yesid Santiago Carrillo Almeida - YesidCarrillo26
-- Edgar Ronaldo Henao Villarreal - ronis97
-- Santiago Miguel Fetecua Suárez - santiago-f20
-- Edwar Fabian Lozano Florez - EdwarLozano
-- Carlos Alberto Sorza Gómez - carlossorza
 
 Breve descripción de la Metodología.
 
@@ -143,10 +127,6 @@ Scrum es un proceso en el que se aplican de manera regular un conjunto de buenas
 1. El quien y el que: Identificar los roles de cada uno de los miembros y definir su responsabilidad en el proyecto.
 
    - YESID SANTIAGO CARRILLO ALMEIDA: Back
-   - EDGAR RONALDO HENAO VILLARREAL: Back
-   - CARLOS ALBERTO SORZA GÓMEZ: Back
-   - SANTIAGO MIGUEL FETECUA SUÁREZ: Front
-   - EDWAR FABIAN LOZANO FLOREZ: Front
 
 2. El donde y Cuando: Que representa el Sprint.
 
@@ -227,6 +207,7 @@ Este sprint nos tomó más trabajo ya que nos dimos cuenta de que habían alguno
 Reporte de análisis estático de código. Se pueden usar las mismas herramientas trabajadas en los laboratorios.
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/2d5c57739e744a08b9560453ce350d62)](https://www.codacy.com/gh/2022-1-PROYCVDS-BIBLIOTECA-ECI/Proyecto-CVDS/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=2022-1-PROYCVDS-BIBLIOTECA-ECI/Proyecto-CVDS&amp;utm_campaign=Badge_Grade)
+
 
 
 
